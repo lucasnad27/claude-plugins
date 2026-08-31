@@ -13,6 +13,8 @@ No templates to fill in and no config to maintain. `/setup` reads your build sys
 /plugin install research-plan-implement@research-plan-implement-workflow
 ```
 
+In VS Code, install it through **Chat: Install Plugin From Source** (`Cmd/Ctrl+Shift+P`) with the same repo, and set `"chat.useAgentSkills": true`. Full steps are in the [plugin README](plugins/research-plan-implement/README.md#install).
+
 Then, in your project: `/setup`, then `/guide`.
 
 ### Why put friction back in

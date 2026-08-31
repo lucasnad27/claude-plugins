@@ -388,6 +388,39 @@ bash .claude/scripts/herdr-phase.sh clear    # strip the marker, keep the featur
 - Safe no-op outside herdr (CI, plain terminals, headless agents) — nothing to configure.
 - Each worktree picks this up once its branch contains the script + skill changes.
 
+## Topic: copilot
+
+### Running This Workflow in VS Code Copilot Chat
+
+VS Code scans `.claude/skills/` and `.claude/agents/` alongside its own `.github/` equivalents, so there is nothing to port and nothing to keep in sync. One difference in the generated files matters, and it is not cosmetic.
+
+**Skills must not carry `model:` or `effort:`.**
+
+A skill whose frontmatter includes `model:` hangs Copilot chat the moment it is invoked — no output, no error, and every later command in that session is dead until VS Code is restarted. The key triggers it whatever the value: a Copilot-format id like `'Claude Opus 4.5 (copilot)'` hangs the same way `opus` does. VS Code's SKILL.md spec documents only `name`, `description`, `argument-hint`, `user-invocable`, and `disable-model-invocation`.
+
+Setup strips both fields when its Copilot question is answered yes, so a workflow generated that way is already correct. If yours came from an install generated before that question existed and `/research-codebase` hangs, that's this bug — re-run setup's upgrade path, or delete the two lines from each `.claude/skills/*/SKILL.md` by hand.
+
+What you give up is per-skill model pinning. In Claude Code these templates pin research and planning to opus at high effort and `/guide` to haiku; in Copilot every skill runs on whichever model you have selected in chat. Pick the model yourself before starting a research or planning pass.
+
+**Enable it** — one setting, in workspace or user settings:
+
+```json
+{ "chat.useAgentSkills": true }
+```
+
+Current VS Code documents `chat.agentSkillsLocations` instead and lists `.claude/skills` among its defaults, with skills on by default since 1.109 — so on a current build you may need no setting at all. Type `/` in the chat input; the phase skills appear as slash commands, the same as in Claude Code.
+
+**Nested subagents** are off by default (`chat.subagents.allowInvocationsFromSubagents`). This workflow never needs them — a phase skill spawning research agents is one level deep.
+
+### What is still unverified
+
+An earlier version of this guide published a frontmatter mapping table — `model: opus` becoming Claude Opus, `Bash` becoming `execute`, and so on — and stated that unknown keys "sit inert rather than erroring." The hang above disproves the last part, and the table was never sourced from documented behaviour. Two related questions are open:
+
+- Whether VS Code translates Claude tool names (`Bash`, `Grep`, `Read`, `Task`) in an agent's `tools:` list. Its own agent examples use names like `['read', 'search', 'web']`. A wrong tool name should degrade an agent rather than hang it.
+- Whether a bare `model: sonnet` on an agent hangs it the way it hangs a skill. VS Code does support `model:` on custom agents, but expects ids like `'Claude Sonnet 4.5 (copilot)'`. Until this is settled, setup strips the field from agents too when Copilot is a target.
+
+If you hit a hang this topic doesn't explain, open **Chat view → Diagnostics** — it lists every loaded customization file with its status and any load errors.
+
 ## Attribution
 
 This workflow is inspired by **HumanLayer's** research on AI-assisted development, with additional influences from **CRISPY/Dex** (design-before-planning, instruction budgets) and **Simon Willison** (TDD, conformance-driven development).

@@ -41,6 +41,8 @@ The right panel is the payoff. Both lines climb. You do not trade speed for comp
 
 ## Install
 
+### Claude Code
+
 Add the marketplace, then the plugin:
 
 ```bash
@@ -48,7 +50,21 @@ Add the marketplace, then the plugin:
 /plugin install research-plan-implement@research-plan-implement-workflow
 ```
 
-Then, in your project:
+### VS Code (Copilot chat)
+
+VS Code's Agent Plugins resolver reads `.claude-plugin/marketplace.json` as one of its four recognized manifest formats, so this repo installs as-is — there's no separate VS Code package.
+
+1. `Cmd/Ctrl+Shift+P` → **Chat: Install Plugin From Source**
+2. Enter `lucasnad27/claude-plugins`
+3. Turn on agent skills in your settings:
+
+   ```json
+   { "chat.useAgentSkills": true }
+   ```
+
+Requires VS Code 1.108 or newer; on older builds the setting is named `github.copilot.chat.skillTool.enabled`.
+
+### Then, in your project
 
 ```bash
 cd my-project
@@ -62,6 +78,16 @@ Start working:
 /research-codebase "How does user authentication work?"
 /design-doc .rpi/2026-04-02-auth-research.md
 ```
+
+### Editors
+
+The generated files run in **Claude Code** and **VS Code Copilot chat** from a single copy — VS Code scans `.claude/skills/` and `.claude/agents/` alongside its own `.github/` equivalents. One difference is load-bearing, so `/setup` asks a single yes/no question: will these files ever be opened in Copilot chat? It asks about the repository rather than your machine — the files get committed, so a teammate on the other editor inherits whatever was generated.
+
+**Skills generated for VS Code carry no `model:` or `effort:` frontmatter.** A skill whose frontmatter includes `model:` hangs Copilot chat when invoked — no output, no error, and the session stays dead until VS Code restarts. The key does it regardless of value; VS Code's SKILL.md spec documents only `name`, `description`, `argument-hint`, `user-invocable`, and `disable-model-invocation`. Setup strips both fields when Copilot is a target, and the upgrade path strips them from installs generated before it was one.
+
+The tradeoff is per-skill model pinning. Claude Code-only installs keep it — research and planning on opus at high effort, `/guide` on haiku. In Copilot every skill runs on the model selected in chat, so choose it before starting a research or planning pass.
+
+Answer yes during `/setup` and it also merges `chat.useAgentSkills` into `.vscode/settings.json` for you. Run `/guide copilot` for the full picture, including what remains unverified about tool-name translation.
 
 ---
 

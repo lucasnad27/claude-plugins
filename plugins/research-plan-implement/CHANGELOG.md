@@ -3,6 +3,47 @@
 All notable changes to the `research-plan-implement` plugin are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com).
 
+## [Unreleased]
+
+### Added
+
+- **VS Code Copilot chat as a setup target.** The generated files are plain
+  `SKILL.md` and agent files, and VS Code scans `.claude/skills/` and
+  `.claude/agents/` directly, so both editors load one copy. Step 3 now asks
+  one yes/no question — will these files ever be opened in Copilot chat —
+  because one difference is load-bearing. It asks about the repository, not
+  the machine running setup: the files get committed, so a teammate on the
+  other editor inherits whatever was generated. Setup prefills the answer
+  from the project (`.vscode/`, `.github/prompts/`) and lets the user
+  overrule it.
+- `/guide copilot` — what VS Code reads, the setting it wants, and what remains
+  unverified about tool-name translation and agent `model:` values.
+
+### Fixed
+
+- **A generated `SKILL.md` carrying `model:` hangs VS Code Copilot chat.** No
+  output, no error, and every later command in the session is dead until VS Code
+  restarts. The key triggers it regardless of value, so a Copilot-format id is
+  not a workaround; `model:` is not in VS Code's SKILL.md spec, which documents
+  `name`, `description`, `argument-hint`, `user-invocable`, and
+  `disable-model-invocation`. When VS Code is a target, setup strips `model:`
+  and `effort:` from every generated skill and agent, and the upgrade path
+  strips them from installs generated before Copilot was an option. Claude
+  Code-only installs are unchanged and keep the per-skill model pinning the two
+  fields buy.
+- The strip runs as `scripts/strip-copilot-frontmatter.sh` over the finished
+  tree rather than by omitting lines while writing each file. Fifteen files
+  edited by eye is one missed `model:` away from a wedged editor, and the miss
+  is invisible until the user invokes that one skill. The script rewrites only
+  the leading frontmatter block, leaves body text alone, is idempotent, and
+  re-scans afterwards so a survivor fails the run instead of shipping.
+- **The `/setup` skill no longer carries `model:` or `effort:` itself.** It had
+  the bug it fixes: the README tells VS Code users to install the plugin into
+  Copilot and run `/setup` there, and that invocation hung on the skill's own
+  `model: opus`. Setup now runs on the session's selected model in both editors
+  and says so up front, asking the user to switch if the session is on something
+  small.
+
 ## [5.0.1] - 2026-08-31
 
 ### Fixed

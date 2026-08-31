@@ -76,7 +76,7 @@ Tip: [One-line tip relevant to current phase]
 
 If $ARGUMENTS is provided, it's a topic name. Read `topics.md` in this skill's directory and present the content for that topic.
 
-**Available topics:** overview, research, design, plan, implement, review, herdr, context, patterns, tips, examples
+**Available topics:** overview, research, design, plan, implement, review, herdr, copilot, context, patterns, tips, examples
 
 Topics are named for the *phase*, so a skill name is an accepted alias — `design-doc` → `design`, `research-codebase` → `research`, `create-plan` → `plan`, `implement-plan` → `implement`, `prepare-pr` → `review`. Resolve the alias and show the topic; don't make the user guess again.
 
