@@ -1,0 +1,49 @@
+repo: /c/repos/try-rpi/webapplications.landstar.trailerpools.manager
+
+=== 1. generated skills present ===
+create-plan
+design
+guide
+implement-plan
+iterate-plan
+prepare-pr
+research-codebase
+
+=== 2. generated agents present ===
+branch-ticket-detector.md
+codebase-analyzer.md
+codebase-locator.md
+codebase-pattern-finder.md
+query-planner.md
+thoughts-analyzer.md
+thoughts-locator.md
+web-search-researcher.md
+
+=== 3. does research-codebase reference an agent that wasn't generated? ===
+  OK       branch-ticket-detector (referenced, exists)
+  OK       query-planner (referenced, exists)
+  OK       codebase-locator (referenced, exists)
+  OK       codebase-analyzer (referenced, exists)
+  OK       codebase-pattern-finder (referenced, exists)
+  OK       thoughts-locator (referenced, exists)
+  OK       thoughts-analyzer (referenced, exists)
+  OK       web-search-researcher (referenced, exists)
+
+=== 4. the herdr first-action line ===
+19:bash "$(git rev-parse --show-toplevel)/.claude/scripts/herdr-phase.sh" research
+script present: yes
+runs clean:
+  exit=0 (0=fine, 124=HUNG)
+
+=== 5. frontmatter Copilot actually reads ===
+---
+name: research-codebase
+description: Document codebase as-is with thoughts directory for historical context
+model: opus
+effort: xhigh
+---
+
+=== 6. VS Code settings ===
+{
+  "chat.useAgentSkills": true
+}

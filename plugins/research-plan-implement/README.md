@@ -63,6 +63,28 @@ Start working:
 /design-doc .rpi/2026-04-02-auth-research.md
 ```
 
+### Running the generated files in another editor
+
+`/setup` writes plain `SKILL.md` and agent files into `.claude/`, so any editor that reads
+those directories picks the workflow up from the same copy — VS Code Copilot chat scans
+`.claude/skills/` and `.claude/agents/` alongside its own `.github/` equivalents.
+
+One incompatibility is worth knowing before you try it. **The generated files carry `model:`
+and `effort:` frontmatter, and a `SKILL.md` with `model:` hangs VS Code Copilot chat the
+moment the skill is invoked** — no output, no error, and the session stays dead until VS Code
+restarts. The key does it regardless of value, so a Copilot-format model id is not a
+workaround; `model:` simply is not in VS Code's SKILL.md spec, which documents `name`,
+`description`, `argument-hint`, `user-invocable`, and `disable-model-invocation`.
+
+If you work in Claude Code only, ignore this — the two keys are what buy per-skill model
+pinning, research and planning on opus at high effort and `/guide` on haiku. If you also use
+Copilot, strip both keys from the leading frontmatter block of every generated skill and
+agent, and expect every skill to run on whatever model is selected in chat.
+
+Copilot may also need `"chat.useAgentSkills": true` in your settings; current builds list
+`.claude/skills` among the defaults for `chat.agentSkillsLocations`, so on those it is a
+no-op and harmless.
+
 ---
 
 ## What you get

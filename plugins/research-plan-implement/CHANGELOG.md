@@ -3,6 +3,15 @@
 All notable changes to the `research-plan-implement` plugin are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com).
 
+## [Unreleased]
+
+### Added
+
+- README section on running the generated files in another editor, and the one
+  incompatibility that matters: a generated `SKILL.md` carries `model:`, which
+  hangs VS Code Copilot chat on invocation until VS Code restarts. Documentation
+  only — no change to what setup generates.
+
 ## [5.0.1] - 2026-08-31
 
 ### Fixed
