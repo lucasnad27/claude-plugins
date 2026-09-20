@@ -19,13 +19,13 @@ You provide contextual orientation for the research-design-plan-implement workfl
 ### Current Workspace State
 
 Recent research docs:
-!`ls -lt .rpi 2>/dev/null | grep -E -- '-research\.md$' | head -3`
+!`ls -lt .rpi 2>/dev/null | grep -E ' research-.*\.md$' | head -3`
 
 Recent design docs:
-!`ls -lt .rpi 2>/dev/null | grep -E -- '-design\.md$' | head -3`
+!`ls -lt .rpi 2>/dev/null | grep -E ' design-.*\.md$' | head -3`
 
 Recent plan docs:
-!`ls -lt .rpi 2>/dev/null | grep -E -- '-plan\.md$' | head -3`
+!`ls -lt .rpi 2>/dev/null | grep -E ' plan-.*\.md$' | head -3`
 
 Git status:
 !`git status --short 2>/dev/null`

@@ -41,7 +41,7 @@ When this command is invoked:
    1. A research document (from /research-codebase) or describe what you want to build
    2. Optionally, a ticket or task reference
 
-   Tip: /design-doc .rpi/2026-01-05-auth-flow-research.md
+   Tip: /design-doc .rpi/research-2026-01-05-auth-flow.md
    ```
 
    Then wait for the user's input.
@@ -59,11 +59,11 @@ When this command is invoked:
 
 ### Step 2: Draft the Design Document
 
-Write the design document to `.rpi/YYYY-MM-DD-description-design.md`
+Write the design document to `.rpi/design-YYYY-MM-DD-description.md`
 
 Use the template from `template.md` in this skill's directory as the starting structure. Adapt each section to the specific project and feature — the template shows what each section should contain and how to adapt based on project context (test infrastructure, API vs UI work, etc.).
 
-**Produce a concrete reference artifact wherever the work has a shape you can render.** A self-contained HTML mockup settles more design questions than three paragraphs describing the same screen, and real JSON settles an API contract faster than a description of it. Write mockups alongside the design doc as `.rpi/YYYY-MM-DD-description-design.html` and link them from the Concrete Reference section. The user reviews the artifact, not your description of it — and the implementing agent builds against it directly.
+**Produce a concrete reference artifact wherever the work has a shape you can render.** A self-contained HTML mockup settles more design questions than three paragraphs describing the same screen, and real JSON settles an API contract faster than a description of it. Write mockups alongside the design doc as `.rpi/design-YYYY-MM-DD-description.html` and link them from the Concrete Reference section. The user reviews the artifact, not your description of it — and the implementing agent builds against it directly.
 
 ### Step 3: Walk Through Open Questions
 
@@ -75,7 +75,7 @@ Use the template from `template.md` in this skill's directory as the starting st
 
 ```
 I've created a design discussion at:
-`.rpi/YYYY-MM-DD-description-design.md`
+`.rpi/design-YYYY-MM-DD-description.md`
 
 This captures our alignment on:
 - [Key point 1]

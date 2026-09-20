@@ -67,18 +67,30 @@ Ready to upgrade? (yes / let me see details for a specific skill)
 
 If you couldn't pin their version down, say so in the summary and show the union of the candidate ranges rather than picking one silently — an extra line about a change they already have is cheaper than not mentioning one they don't.
 
+For an upgrade **from v5.0**, one thing changes — where the type sits in an artifact's name:
+
+```
+Artifact filenames lead with their type instead of ending with it:
+
+  .rpi/2026-01-05-auth-plan.md  ->  .rpi/plan-2026-01-05-auth.md
+
+A file tree truncates from the right, so a narrow one showed the date and cut
+off the one part you were choosing between. The upgrade renames what's in your
+artifacts directory and rewrites the links between those files. Other worktrees
+keep their own .rpi/; you'll be offered the same rename there.
+```
+
 For an upgrade **from v4.1**, artifacts move, one skill is renamed, and
 `/prepare-pr` and `/implement-plan` change shape:
 
 ```
 The default artifacts directory moved from thoughts/shared/ to .rpi/, and it's
-flat — no subdirectory per type. The type is now the filename's last segment:
+flat — no subdirectory per type. The type is now the filename's first segment:
 
-  thoughts/shared/plans/2026-01-05-auth.md  ->  .rpi/2026-01-05-auth-plan.md
+  thoughts/shared/plans/2026-01-05-auth.md  ->  .rpi/plan-2026-01-05-auth.md
 
-A dated name keeps one feature's whole chain sorted together, and a hidden root
-that only this workflow writes to can be gitignored in one line without stepping
-on anything else in the repo.
+A hidden root that only this workflow writes to can be gitignored in one line
+without stepping on anything else in the repo.
 
 You choose what happens to your install: keep thoughts/shared/ exactly as it is,
 move to .rpi/, or name your own root. Moving relocates and renames the existing
@@ -202,16 +214,16 @@ Ask with `AskUserQuestion`:
 - **Move to `.rpi/`** — adopt the new default. Existing artifacts move, get renamed to the flat convention, and the references between them are rewritten.
 - **Somewhere else** — they name a root (`.output/`, `notes/`, whatever). Same migration, different destination.
 
-Whatever they pick is the root you adapt every template against in Step U4. If they keep their current root, nothing moves and the rest of the upgrade proceeds unchanged. The flat naming is not optional either way — `/implement-plan` and `/prepare-pr` locate review metadata by swapping a plan's `-plan` suffix for `-review`.
+Whatever they pick is the root you adapt every template against in Step U4. If they keep their current root, nothing moves and the rest of the upgrade proceeds unchanged. The flat naming is not optional either way — `/implement-plan` and `/prepare-pr` locate review metadata by swapping a plan's `plan-` prefix for `review-`.
 
 ### Migrating the artifacts
 
 Only for the two answers that move files, and only before regenerating — the skills you write in Step U4 have to agree with what's on disk.
 
-This is a move **and** a rename: the type used to be the directory, and now it's the filename's last segment.
+This is a move **and** a rename: the type used to be the directory, and now it's the filename's first segment.
 
 ```
-thoughts/shared/plans/2026-01-05-auth.md   →   .rpi/2026-01-05-auth-plan.md
+thoughts/shared/plans/2026-01-05-auth.md   →   .rpi/plan-2026-01-05-auth.md
 ```
 
 **Move only what this workflow owns:** `research/`, `designs/`, `plans/`, `review-metadata/`, and `tickets/` and `prs/` if they exist. Everything else under the old root belongs to the user — list it and ask before touching it.
@@ -227,7 +239,7 @@ thoughts/shared/plans/2026-01-05-auth.md   →   .rpi/2026-01-05-auth-plan.md
      esac
      for f in "thoughts/shared/$d"/*.md "thoughts/shared/$d"/*.html; do
        [ -e "$f" ] || continue
-       base=${f##*/}; dest=".rpi/${base%.*}-$t.${base##*.}"
+       base=${f##*/}; dest=".rpi/$t-$base"
        if [ -e "$dest" ]; then echo "SKIP $f — $dest exists, ask first"; continue; fi
        if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
          git mv "$f" "$dest"
@@ -244,7 +256,7 @@ thoughts/shared/plans/2026-01-05-auth.md   →   .rpi/2026-01-05-auth-plan.md
 
    ```bash
    grep -rl 'thoughts/shared/' .rpi/ | while read -r f; do
-     perl -pi -e 's{thoughts/shared/(research|designs|plans|review-metadata|tickets|prs)/([\w.-]+?)\.(md|html)}{".rpi/$2-" . {research=>"research",designs=>"design",plans=>"plan","review-metadata"=>"review",tickets=>"ticket",prs=>"pr"}->{$1} . ".$3"}ge' "$f"
+     perl -pi -e 's{thoughts/shared/(research|designs|plans|review-metadata|tickets|prs)/([\w.-]+?)\.(md|html)}{".rpi/" . {research=>"research",designs=>"design",plans=>"plan","review-metadata"=>"review",tickets=>"ticket",prs=>"pr"}->{$1} . "-$2.$3"}ge' "$f"
      echo "rewrote $f"
    done
    ```
@@ -256,6 +268,35 @@ thoughts/shared/plans/2026-01-05-auth.md   →   .rpi/2026-01-05-auth-plan.md
 4. **Clean up the old root.** If nothing is left under it, offer to remove it. If something is, leave it and say what's still there.
 
 Substitute the chosen root for `.rpi/` throughout if they named their own. Nothing outside these directories moves: this is a migration of the workflow's own output, not a repo-wide path rewrite.
+
+### Renaming v5.0 artifacts
+
+v5.0 put the type last (`2026-01-05-auth-plan.md`); it now leads (`plan-2026-01-05-auth.md`). Any install on 5.0 gets this rename whatever root it keeps, and it runs before Step U4 for the same reason — the regenerated skills look files up by prefix. Run it against the root the install actually writes to, and substitute that for `.rpi/`.
+
+1. **Rename in place.** Already-prefixed files are skipped, so a re-run is harmless. `find` rather than a glob, because zsh aborts a `for` loop on a glob that matches nothing.
+
+   ```bash
+   find .rpi -maxdepth 1 -type f \( -name '*.md' -o -name '*.html' \) | while read -r f; do
+     base=${f##*/}; stem=${base%.*}; ext=${base##*.}; t=${stem##*-}
+     case "$base" in research-*|design-*|plan-*|review-*|ticket-*|pr-*) continue ;; esac
+     case "$t" in research|design|plan|review|ticket|pr) ;; *) continue ;; esac
+     dest=".rpi/$t-${stem%-*}.$ext"
+     if [ -e "$dest" ]; then echo "SKIP $f — $dest exists, ask first"; continue; fi
+     if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then git mv "$f" "$dest"; else mv "$f" "$dest"; fi
+     echo "$f -> $dest"
+   done
+   ```
+
+2. **Rewrite the cross-references.** Plans link their design and research, review metadata links its plan:
+
+   ```bash
+   grep -rlE '\.rpi/[A-Za-z0-9_.-]+-(research|design|plan|review|ticket|pr)\.(md|html)' .rpi/ | while read -r f; do
+     perl -pi -e 's{\.rpi/(?!(?:research|design|plan|review|ticket|pr)-)([\w.-]+?)-(research|design|plan|review|ticket|pr)\.(md|html)}{.rpi/$2-$1.$3}g' "$f"
+     echo "rewrote $f"
+   done
+   ```
+
+3. **Offer it in the other worktrees.** `.rpi/` is gitignored, so every worktree has its own, and one mid-implementation that picks up the regenerated skills without the rename loses the plan-to-review lookup. List the worktrees (`git worktree list`) whose root still holds suffix-named files and ask before running steps 1–2 in each.
 
 ## Step U4: Regenerate
 

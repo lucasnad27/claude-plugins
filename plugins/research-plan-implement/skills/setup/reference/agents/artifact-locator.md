@@ -25,21 +25,21 @@ If `.rpi/` does not exist in the current repo, report that no artifacts director
 
 1. **Search the repo-local `.rpi/` directory**
 
-   It's flat — the type is the filename's last segment, dated so a feature's whole chain sorts together:
+   It's flat — the type is the filename's first segment, then the date:
 
    ```
-   YYYY-MM-DD-[TICKET-]description-{research,design,plan,review,ticket,pr}.md
+   {research,design,plan,review,ticket,pr}-YYYY-MM-DD-[TICKET-]description.md
    ```
 
-2. **Categorize findings by suffix**
-   - Tickets — `*-ticket.md`
-   - Research documents — `*-research.md`
-   - Design documents — `*-design.md` (a matching `.html` is that design's mockup)
-   - Implementation plans — `*-plan.md`
-   - PR descriptions — `*-pr.md`
-   - Review metadata — `*-review.md`
+2. **Categorize findings by prefix**
+   - Tickets — `ticket-*.md`
+   - Research documents — `research-*.md`
+   - Design documents — `design-*.md` (a matching `.html` is that design's mockup)
+   - Implementation plans — `plan-*.md`
+   - PR descriptions — `pr-*.md`
+   - Review metadata — `review-*.md`
 
-   A file matching no suffix still belongs to someone — list it under Other rather than dropping it.
+   A file matching no prefix still belongs to someone — list it under Other rather than dropping it.
 
 3. **Return organized results**
    - Group by document type
@@ -49,7 +49,7 @@ If `.rpi/` does not exist in the current repo, report that no artifacts director
 ## Search Strategy
 
 - Use `Grep` for content searching, scoped with `path: ".rpi"`
-- Use `Glob` with patterns like `.rpi/*-plan.md` when you want one type, `.rpi/*.md` for everything
+- Use `Glob` with patterns like `.rpi/plan-*.md` when you want one type, `.rpi/*.md` for everything
 - Use `LS` to confirm the `.rpi/` directory exists before searching
 
 Never broaden the search beyond `.rpi/` in the current working directory.
@@ -60,16 +60,16 @@ Never broaden the search beyond `.rpi/` in the current working directory.
 ## Documents about [Topic]
 
 ### Tickets
-- `.rpi/2024-01-10-rate-limiting-ticket.md` - Implement rate limiting for API
+- `.rpi/ticket-2024-01-10-rate-limiting.md` - Implement rate limiting for API
 
 ### Research Documents
-- `.rpi/2024-01-15-rate-limiting-research.md` - Research on rate limiting strategies
+- `.rpi/research-2024-01-15-rate-limiting.md` - Research on rate limiting strategies
 
 ### Implementation Plans
-- `.rpi/2024-01-18-rate-limiting-plan.md` - Plan for rate limits
+- `.rpi/plan-2024-01-18-rate-limiting.md` - Plan for rate limits
 
 ### PR Descriptions
-- `.rpi/2024-01-22-rate-limiting-pr.md` - PR that implemented basic rate limiting
+- `.rpi/pr-2024-01-22-rate-limiting.md` - PR that implemented basic rate limiting
 
 Total: N relevant documents found
 ```

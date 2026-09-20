@@ -31,7 +31,7 @@ Also check where workflow artifacts should live. `.rpi/` is the default root; no
 
 ## Detecting the issue tracker
 
-Check for CLIs (`which linear`, `which gh`, `which glab`), ticket files (`.rpi/*-ticket.md`, or a `thoughts/*/tickets/` directory on an older install), and the git remote host. Note both what the project uses *and* whether the CLI is actually installed — the generated skills depend on it.
+Check for CLIs (`which linear`, `which gh`, `which glab`), ticket files (`.rpi/ticket-*.md`, or a `thoughts/*/tickets/` directory on an older install), and the git remote host. Note both what the project uses *and* whether the CLI is actually installed — the generated skills depend on it.
 
 Install hints if a CLI is missing:
 - Linear: `npm install -g @linear/cli`
@@ -87,7 +87,8 @@ Present the complete resolved configuration and get a yes before generating anyt
 An upgrade must not assume `.rpi/`. Grep the installed skills for the paths they
 actually write to — `grep -ho '[A-Za-z._/-]*/\(research\|designs\|plans\|review-metadata\)/' .claude/skills/*/SKILL.md | sort -u` —
 and take the common root from that. It's usually `thoughts/shared/`, but a user who
-customized their install may have anything. Cross-check against what's on disk;
+customized their install may have anything. A 5.0+ install is flat, so that grep finds
+nothing; read the root from the `path:` scope in `.claude/agents/artifact-locator.md`. Cross-check against what's on disk;
 if the skills and the filesystem disagree, show both and ask.
 
 `upgrade.md` uses this root as the "keep what you have" option.

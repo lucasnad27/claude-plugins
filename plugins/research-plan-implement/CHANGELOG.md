@@ -3,6 +3,31 @@
 All notable changes to the `research-plan-implement` plugin are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com).
 
+## [Unreleased]
+
+### Changed
+
+- **Artifact filenames lead with their type.** A file tree truncates from the right, so a
+  narrow one showed the date and cut off the part you were choosing between:
+
+  ```
+  .rpi/2026-01-05-auth-plan.md  ->  .rpi/plan-2026-01-05-auth.md
+  ```
+
+  Names are `{research,design,plan,review}-YYYY-MM-DD-[TICKET-]description.md`, and
+  `ticket-` / `pr-` follow the same shape. Date-first grouped a feature's chain, but
+  `.rpi/` is per-worktree and rarely holds more than one chain.
+- `/implement-plan` and `/prepare-pr` find review metadata by swapping a plan's
+  **`plan-` prefix for `review-`**.
+- `/guide`'s workspace probes and `artifact-locator`'s globs match on the prefix.
+
+### Added
+
+- **Upgrading from 5.0 renames existing artifacts in place** and rewrites the links
+  between them, whatever root the install keeps. `.rpi/` is gitignored and so
+  per-worktree; setup lists the other worktrees still holding suffix-named files and
+  offers the same rename there.
+
 ## [5.0.1] - 2026-08-31
 
 ### Fixed

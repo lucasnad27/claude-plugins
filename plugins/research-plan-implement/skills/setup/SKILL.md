@@ -42,7 +42,7 @@ Ask for whatever you couldn't detect, batched into as few turns as possible — 
 
 ## Step 3: Ask preferences
 
-1. **Artifacts directory** — where research, designs, plans, and review metadata get written. Default to `.rpi/`; state it rather than asking an open question, and let them name a different root if they want one. It's flat: the type is the filename's last segment (`-research`, `-design`, `-plan`, `-review`), so nothing nests. Don't offer to customize the naming.
+1. **Artifacts directory** — where research, designs, plans, and review metadata get written. Default to `.rpi/`; state it rather than asking an open question, and let them name a different root if they want one. It's flat: the type is the filename's first segment (`research-`, `design-`, `plan-`, `review-`), so nothing nests. Don't offer to customize the naming.
 2. **Additional commands** — any custom verification commands or project-specific testing notes to fold in?
 3. **Gitignore** — recommend ignoring the artifacts root: these are working notes, not source, and keeping them out of git keeps PRs clean. One line, `.rpi/`. If artifacts are already tracked, offer `git rm --cached -r .rpi/` to untrack without deleting.
 4. **Confirm** — ready to generate?
@@ -115,7 +115,7 @@ Adapted for your project:
 - Build command: [detected command]
 - Database: [detected tool and commands]
 - Issue tracking: [detected system]
-- Artifacts directory: [chosen root] (flat; type is the filename suffix)
+- Artifacts directory: [chosen root] (flat; type is the filename prefix)
 
 Workflow:
   /research-codebase -> /design-doc -> /create-plan -> /implement-plan -> /prepare-pr
@@ -123,9 +123,9 @@ Workflow:
 
 Quick start:
   /research-codebase "How does authentication work?"
-  /design-doc .rpi/2026-01-05-auth-flow-research.md
-  /create-plan .rpi/2026-01-05-auth-redesign-design.md
-  /implement-plan .rpi/2026-01-05-auth-redesign-plan.md
+  /design-doc .rpi/research-2026-01-05-auth-flow.md
+  /create-plan .rpi/design-2026-01-05-auth-redesign.md
+  /implement-plan .rpi/plan-2026-01-05-auth-redesign.md
   /prepare-pr
 
 These files are yours now — edit them freely as you learn what your team needs.
@@ -191,11 +191,11 @@ Attribution:
 
 ```
 .rpi/
-├── 2026-01-05-auth-research.md
-├── 2026-01-05-auth-design.md
-├── 2026-01-05-auth-design.html      # optional mockup from /design-doc
-├── 2026-01-05-auth-plan.md
-└── 2026-01-05-auth-review.md
+├── research-2026-01-05-auth.md
+├── design-2026-01-05-auth.md
+├── design-2026-01-05-auth.html      # optional mockup from /design-doc
+├── plan-2026-01-05-auth.md
+└── review-2026-01-05-auth.md
 ```
 
 ## Success criteria

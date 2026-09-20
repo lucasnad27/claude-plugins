@@ -240,27 +240,27 @@ One artifact, three places it appears:
 **Greenfield Feature:**
 ```bash
 /research-codebase "How are similar features implemented?"
-/design-doc .rpi/2026-01-05-feature-research.md
-/create-plan .rpi/2026-01-05-feature-design.md
-/implement-plan .rpi/2026-01-05-feature-plan.md
+/design-doc .rpi/research-2026-01-05-feature.md
+/create-plan .rpi/design-2026-01-05-feature.md
+/implement-plan .rpi/plan-2026-01-05-feature.md
 /prepare-pr
 ```
 
 **Bug Fix:**
 ```bash
 /research-codebase "Why is X failing?"
-/design-doc .rpi/2026-01-05-bug-research.md
-/create-plan .rpi/2026-01-05-bug-design.md
-/implement-plan .rpi/2026-01-05-bug-plan.md
+/design-doc .rpi/research-2026-01-05-bug.md
+/create-plan .rpi/design-2026-01-05-bug.md
+/implement-plan .rpi/plan-2026-01-05-bug.md
 /prepare-pr
 ```
 
 **Refactoring:**
 ```bash
 /research-codebase "How does module X work currently?"
-/design-doc .rpi/2026-01-05-refactor-research.md
-/create-plan .rpi/2026-01-05-refactor-design.md
-/implement-plan .rpi/2026-01-05-refactor-plan.md
+/design-doc .rpi/research-2026-01-05-refactor.md
+/create-plan .rpi/design-2026-01-05-refactor.md
+/implement-plan .rpi/plan-2026-01-05-refactor.md
 /prepare-pr
 ```
 
@@ -268,11 +268,11 @@ One artifact, three places it appears:
 ```bash
 # Day 1: Research, design, plan
 /research-codebase "How should feature X integrate?"
-/design-doc .rpi/2026-01-05-feature-research.md
-/create-plan .rpi/2026-01-05-feature-design.md
+/design-doc .rpi/research-2026-01-05-feature.md
+/create-plan .rpi/design-2026-01-05-feature.md
 
 # Day 2+: Implement (resumes from last checkpoint)
-/implement-plan .rpi/2026-01-05-feature-plan.md
+/implement-plan .rpi/plan-2026-01-05-feature.md
 
 # Final: Review
 /prepare-pr

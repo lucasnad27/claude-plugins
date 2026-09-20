@@ -78,7 +78,7 @@ pattern and fetch command below change per tracker.
 ### Local ticket files
 
 - Identifier shape: a ticket key like `ENG-123` embedded in the branch (`eng-123-fix-retry`).
-- Map it to the ticket file path used in this project (e.g. `.rpi/ENG-123-ticket.md` — adapt to the actual path).
+- Map it to the ticket file path used in this project (e.g. `.rpi/ticket-ENG-123.md` — adapt to the actual path).
 - Fetch: `Read` the file fully. If no file matches, report "No ticket found".
 
 ## Output Format

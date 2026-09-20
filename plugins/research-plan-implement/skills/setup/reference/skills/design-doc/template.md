@@ -16,7 +16,7 @@ interface or a contract is the weakest form of spec — replace it with the real
 wherever the shape of the work allows:]
 
 [If it's UI work:]
-- Write a self-contained HTML mockup to `.rpi/YYYY-MM-DD-description-design.html`
+- Write a self-contained HTML mockup to `.rpi/design-YYYY-MM-DD-description.html`
   and link it here. A mockup settles layout, states, and copy in one pass — arguments
   that prose would leave unresolved until implementation.
 - Include the states that matter: empty, loading, error, populated.

@@ -4,8 +4,8 @@
 [1-2 sentence summary of what we're implementing]
 
 ## Design Reference
-- Design: `.rpi/YYYY-MM-DD-description-design.md`
-- Research: `.rpi/YYYY-MM-DD-description-research.md` (if applicable)
+- Design: `.rpi/design-YYYY-MM-DD-description.md`
+- Research: `.rpi/research-YYYY-MM-DD-description.md` (if applicable)
 - Ticket: [reference if applicable]
 
 ## Implementation Approach
@@ -72,6 +72,6 @@ _`/implement-plan` fills this in when the phase finishes. Leave it as-is when wr
 ---
 
 ## References
-- Design: `.rpi/[file]-design.md`
-- Research: `.rpi/[file]-research.md`
+- Design: `.rpi/design-[file].md`
+- Research: `.rpi/research-[file].md`
 - Similar implementation: `[file:line]`
