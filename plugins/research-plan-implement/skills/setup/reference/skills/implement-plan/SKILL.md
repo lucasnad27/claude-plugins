@@ -7,7 +7,7 @@ effort: xhigh
 
 # Implement Plan
 
-You are tasked with implementing an approved technical plan (`.rpi/*-plan.md`). These plans contain phases with specific changes and success criteria.
+You are tasked with implementing an approved technical plan (`.rpi/plan-*.md`). These plans contain phases with specific changes and success criteria.
 
 ## Mark the herdr phase
 
@@ -135,14 +135,14 @@ If a plan predates this convention and has no `### Completion` blocks, don't ret
 
 ### Where it lives
 
-Swap the plan's `-plan` suffix for `-review`:
+Swap the plan's `plan-` prefix for `review-`:
 
 ```
-.rpi/YYYY-MM-DD-description-plan.md
-.rpi/YYYY-MM-DD-description-review.md
+.rpi/plan-YYYY-MM-DD-description.md
+.rpi/review-YYYY-MM-DD-description.md
 ```
 
-Same stem, always — that's how a fresh agent finds the file without guessing. **Read it before you write.** If it exists, append your section with Edit and leave the earlier ones alone; never Write over a file that already has phases in it. If it doesn't exist, create it from `review-metadata-template.md` in this skill's directory.
+Same date and description, always — that's how a fresh agent finds the file without guessing. **Read it before you write.** If it exists, append your section with Edit and leave the earlier ones alone; never Write over a file that already has phases in it. If it doesn't exist, create it from `review-metadata-template.md` in this skill's directory.
 
 ### What each phase contributes
 
@@ -231,6 +231,6 @@ If the plan has existing checkmarks:
 - Trust that completed work is done
 - Pick up from the first unchecked item
 - Verify previous work only if something seems off
-- Read the review-metadata file (the plan's name with `-plan` swapped for `-review`) to see which phases have already contributed a triage section — you append to it, you don't restart it
+- Read the review-metadata file (the plan's name with `plan-` swapped for `review-`) to see which phases have already contributed a triage section — you append to it, you don't restart it
 
 Remember: You're implementing a solution, not just checking boxes. Keep the end goal in mind and maintain forward momentum.

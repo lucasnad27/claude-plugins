@@ -60,7 +60,7 @@ Start working:
 
 ```bash
 /research-codebase "How does user authentication work?"
-/design-doc .rpi/2026-04-02-auth-research.md
+/design-doc .rpi/research-2026-04-02-auth.md
 ```
 
 ---
@@ -107,18 +107,18 @@ Start working:
 /prepare-pr         🔍   PR opened, diff annotated with numbered stops.
 ```
 
-Each writes to `.rpi/`, flat, with the type as the filename's last segment:
+Each writes to `.rpi/`, flat, with the type as the filename's first segment:
 
 ```
 .rpi/
-├── 2026-01-05-auth-research.md    # /research-codebase
-├── 2026-01-05-auth-design.md      # /design-doc
-├── 2026-01-05-auth-design.html    #   ...and its mockup, when the work has a shape
-├── 2026-01-05-auth-plan.md        # /create-plan
-└── 2026-01-05-auth-review.md      # /implement-plan
+├── research-2026-01-05-auth.md    # /research-codebase
+├── design-2026-01-05-auth.md      # /design-doc
+├── design-2026-01-05-auth.html    #   ...and its mockup, when the work has a shape
+├── plan-2026-01-05-auth.md        # /create-plan
+└── review-2026-01-05-auth.md      # /implement-plan
 ```
 
-A dated name sorts one feature's whole chain together, which is the order you read them in. A directory only this workflow writes to takes a one-line `.gitignore` entry without stepping on anything else. Setup asks before settling on a root, so `.output/`, `notes/`, or anything else works — the naming convention stays either way, since `/prepare-pr` finds a plan's review metadata by swapping `-plan` for `-review`.
+The type leads because it's the part you open a file for, and a narrow file tree truncates from the right. A directory only this workflow writes to takes a one-line `.gitignore` entry without stepping on anything else. Setup asks before settling on a root, so `.output/`, `notes/`, or anything else works — the naming convention stays either way, since `/prepare-pr` finds a plan's review metadata by swapping `plan-` for `review-`.
 
 Revising a plan is a direct edit — there is no command for it. Keep it internally consistent, and leave a completed phase's `### Completion` block alone: it is a record, and a later phase reads it as its only memory of the earlier one.
 

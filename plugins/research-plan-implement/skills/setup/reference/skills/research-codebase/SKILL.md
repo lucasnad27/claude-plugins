@@ -97,12 +97,12 @@ Detection is a convenience, not a constraint — the user can always override th
 
    - Identify the date, current commit hash, current branch name, and topic
 
-   - Filename: `.rpi/YYYY-MM-DD-ENG-XXXX-description-research.md`
+   - Filename: `.rpi/research-YYYY-MM-DD-ENG-XXXX-description.md`
+     - `research-` is the type prefix, and it's what distinguishes this file from the design and plan that follow it
      - YYYY-MM-DD is today's date
      - ENG-XXXX is the ticket number (omit if no ticket)
      - description is a brief kebab-case description of the research topic
-     - `-research` is the type suffix, and it's what distinguishes this file from the design and plan that follow it
-     - Examples: `.rpi/2025-01-08-ENG-1478-parent-child-tracking-research.md`, `.rpi/2025-01-08-authentication-flow-research.md`
+     - Examples: `.rpi/research-2025-01-08-ENG-1478-parent-child-tracking.md`, `.rpi/research-2025-01-08-authentication-flow.md`
 
    Gather this before writing the document — never write it with placeholder values.
 
@@ -158,8 +158,8 @@ Detection is a convenience, not a constraint — the user can always override th
 
      [Relevant insights from the .rpi/ directory with references]
 
-     - `.rpi/2025-11-02-rate-limits-design.md` - Historical decision about X
-     - `.rpi/2025-09-18-auth-refactor-research.md` - Past exploration of Y
+     - `.rpi/design-2025-11-02-rate-limits.md` - Historical decision about X
+     - `.rpi/research-2025-09-18-auth-refactor.md` - Past exploration of Y
 
      ## Related Research
 
@@ -185,7 +185,7 @@ Detection is a convenience, not a constraint — the user can always override th
    - Present a concise summary of findings to the user
    - Include the path to the research document, and steer toward the open questions:
      ```
-     Research doc: `.rpi/YYYY-MM-DD-description-research.md`. Scan over it to make sure you and I are aligned before moving to design — often, running through the open questions is all you really need to do.
+     Research doc: `.rpi/research-YYYY-MM-DD-description.md`. Scan over it to make sure you and I are aligned before moving to design — often, running through the open questions is all you really need to do.
 
      Want to go through them now?
      ```
@@ -206,5 +206,5 @@ Detection is a convenience, not a constraint — the user can always override th
 - Always run fresh codebase research — never rely solely on existing research documents. The `.rpi/` directory supplements live findings; it doesn't replace them.
 - Research documents should be self-contained, with concrete file paths and line numbers, and GitHub links where possible
 - Keep the main agent focused on synthesis, not deep file reading — that's what the sub-agents are for
-- Explore all of `.rpi/`, not just the `*-research.md` files
+- Explore all of `.rpi/`, not just the `research-*.md` files
 - **Path handling**: only reference paths within the current repo's `.rpi/` directory. Never broaden searches to parent dirs, sibling worktrees, or home-directory paths.

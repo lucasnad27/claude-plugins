@@ -33,7 +33,7 @@ When this command is invoked:
    1. The design document (from /design-doc) — required
    2. Optionally, the research doc or ticket reference
 
-   Tip: /create-plan .rpi/2026-01-05-auth-redesign-design.md
+   Tip: /create-plan .rpi/design-2026-01-05-auth-redesign.md
    ```
 
    Then wait for the user's input.
@@ -74,9 +74,9 @@ Get user approval on the outline before writing the full plan.
 
 ### Step 3: Write the Plan
 
-Write the plan to `.rpi/YYYY-MM-DD-description-plan.md`
+Write the plan to `.rpi/plan-YYYY-MM-DD-description.md`
 
-**Filename format:** `YYYY-MM-DD-[ENG-XXXX-]description.md`
+**Filename format:** `plan-YYYY-MM-DD-[ENG-XXXX-]description.md`
 - YYYY-MM-DD is today's date
 - ENG-XXXX is the ticket number (omit if no ticket)
 - description is a brief kebab-case description
@@ -87,7 +87,7 @@ Write the plan to `.rpi/YYYY-MM-DD-description-plan.md`
 
 ```
 I've created the implementation plan at:
-`.rpi/YYYY-MM-DD-description-plan.md`
+`.rpi/plan-YYYY-MM-DD-description.md`
 
 Please spot-check it — the design decisions are already aligned,
 so this is about verifying the phasing and testing approach make sense.

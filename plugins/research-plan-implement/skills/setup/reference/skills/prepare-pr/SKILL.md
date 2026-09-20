@@ -74,9 +74,9 @@ Separate "verify this is correct" from "decide whether you accept this." Load-be
 3. **Read the full diff.** It is the source of truth.
 
 4. **Check for supporting context (all optional):**
-   - A design doc (`.rpi/*-design.md`) matching the recent dates or the branch name — the *intent* behind the change, and any concrete reference artifact it links.
-   - The plan (`.rpi/*-plan.md`) this branch implemented. Its per-phase `### Completion` blocks record what was actually built versus specified — deviations, waivers, anything left unproven. `.rpi/` is working state that dies with the worktree, so the PR is the only durable home for anything that outlives the merge.
-   - Review metadata at **the plan's name with `-plan` swapped for `-review`**. If you found a plan, that path is deterministic — read it directly rather than globbing; fall back to matching recent dates only when there's no plan in hand. Its per-file Critical / Mechanical / Tests triage was written by the agent that wrote the code, so it picks stops far better than the diff can.
+   - A design doc (`.rpi/design-*.md`) matching the recent dates or the branch name — the *intent* behind the change, and any concrete reference artifact it links.
+   - The plan (`.rpi/plan-*.md`) this branch implemented. Its per-phase `### Completion` blocks record what was actually built versus specified — deviations, waivers, anything left unproven. `.rpi/` is working state that dies with the worktree, so the PR is the only durable home for anything that outlives the merge.
+   - Review metadata at **the plan's name with `plan-` swapped for `review-`**. If you found a plan, that path is deterministic — read it directly rather than globbing; fall back to matching recent dates only when there's no plan in hand. Its per-file Critical / Mechanical / Tests triage was written by the agent that wrote the code, so it picks stops far better than the diff can.
    - The issue the work is tied to, if the project tracks them.
    - These sharpen the guide, but it works from the diff alone — which is exactly the case when preparing a PR for someone else's branch.
 
