@@ -67,8 +67,16 @@ Phase 2: [Name] — [What it accomplishes end-to-end]
 Phase 3: [Name] — [What it accomplishes end-to-end]
   Testing: [How this phase will be verified]
 
+Files by phase:
+src/
+├── routes/dashboard/+page.svelte       # P1, P3
+├── lib/server/jobs/metrics.ts          # P2
+└── routes/dashboard/+page.server.ts    # P3
+
 Does this phasing make sense? Should I adjust?
 ```
+
+The tree is the quickest verticality check. When the tags line up with the stack's layers — every schema file P1, every service P2, every route P3 — the phases are layers, not slices; reslice unless this is one of the cases below where horizontal is fine.
 
 Get user approval on the outline before writing the full plan.
 

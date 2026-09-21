@@ -181,6 +181,8 @@ Attribution:
   Informed by talks from Dex (CRISPY) and Simon Willison (TDD/conformance)
   Reuse-before-writing, root-cause-over-symptom, and the yagni stop type
     adapted from ponytail (MIT) - github.com/DietrichGebert/ponytail
+  Checkpoint views (call trees, file trees, shape diffs) adapted from
+    HumanLayer's show-me skill (MIT) - github.com/humanlayer/skills
   Website: humanlayer.dev
   GitHub: github.com/humanlayer/humanlayer
 ```

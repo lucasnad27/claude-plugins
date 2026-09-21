@@ -27,6 +27,27 @@ Format based on [Keep a Changelog](https://keepachangelog.com).
   between them, whatever root the install keeps. `.rpi/` is gitignored and so
   per-worktree; setup lists the other worktrees still holding suffix-named files and
   offers the same rename there.
+- **Each phase shows its checkpoint as a view** — a call tree, a file tree, or a diff of
+  one — instead of leaving the shape in prose. The views come from HumanLayer's
+  [show-me](https://github.com/humanlayer/skills/tree/main/plugins/show-me) skill and are
+  built into the templates; there's nothing extra to install.
+  - **`/research-codebase`** — the research doc's Summary carries one view of the main
+    flow as it stands, and the findings lead with it. Never a diff; a diff proposes a
+    change.
+  - **`/design-doc`** — a structural change (a refactor, a new module, rewired calls)
+    gets a call-tree, file-tree, or component-tree diff as its concrete reference. Open
+    questions whose options differ in shape show each option's sketch in the
+    `AskUserQuestion` preview. An HTML view made earlier in the conversation moves to
+    the design's `.html` path when it settled a question, so later phases read it.
+  - **`/create-plan`** — the phase outline ends with a file tree tagged by phase, which
+    shows when the phases have lined up with the stack's layers instead of slicing
+    through.
+  - **`/implement-plan`** — a structural deviation shows the plan's shape against what
+    the code needs, as a diff.
+  - **`/prepare-pr`** — a PR that moves structure gets one call-tree or file-tree diff,
+    or a Mermaid sequence diagram, under Summary: ≤12 lines, inside the 60-line cap.
+  - `/guide tips` and the README point to `/show-me` for the moments between
+    checkpoints.
 
 ## [5.0.1] - 2026-08-31
 

@@ -145,6 +145,8 @@ Two "agent-native" tools are wired in already, because we reach for them daily. 
 - **[herdr](https://herdr.dev)** — a terminal multiplexer for coding agents. Each phase tags its tab with a glyph (🔬 🎨 📋 🔨 🔍), turning the sidebar into a phase board across every worktree you have open. The script installs unconditionally and is a silent no-op outside herdr, so there's nothing to disable if you don't run it.
 - **[tuicr](https://tuicr.dev)** — a terminal PR reviewer. Because stops are posted as GitHub review threads, `tuicr pr <n>` renders them natively with no seeding step, and resolving a thread ticks it off in both places. If it isn't installed, `/prepare-pr` says so once and moves on — the stops are on the PR either way.
 
+Between checkpoints, HumanLayer's [show-me](https://github.com/humanlayer/skills/tree/main/plugins/show-me) skill draws whatever you're stuck on — a call tree, a file tree, a diff — when you ask for it. The phases already use its views at their checkpoints; installing it adds the on-demand version.
+
 Design tooling works the same way. `/design-doc` produces a self-contained HTML mockup by default; name [Paper](https://paper.design), [impeccable](https://impeccable.style), Figma, or whatever your team actually opens, and it routes the artifact through that instead.
 
 So does everything else — your linter, your migration tool, your deploy check, your org's PR template, the review checklist that currently lives in someone's head. Setup asks for custom verification commands and folds them into the phases that need them.
@@ -241,6 +243,7 @@ Inspired by and adapted from several sources in the AI-assisted development comm
 - **CRISPY / Dex** — design-before-planning discipline and structured review phases
 - **Simon Willison** — practical AI-assisted development patterns and the value of explicit workflow documentation
 - **[ponytail](https://github.com/DietrichGebert/ponytail)** (MIT, by DietrichGebert) — the reuse-before-writing ladder in `/create-plan`, root-cause-over-symptom in `/implement-plan`, and treating a one-caller abstraction as a reviewable finding (the `yagni` stop type in `/prepare-pr`)
+- **[show-me](https://github.com/humanlayer/skills/tree/main/plugins/show-me)** (MIT, by HumanLayer) — the call trees, file trees, and shape diffs each phase shows at its checkpoint, and the rule of picking the smallest view that makes the point
 
 The intentional compaction strategy and multi-phase workflow originated from HumanLayer's work on optimizing agent effectiveness through context window management, expanded here with design alignment and review phases drawn from the broader community.
 

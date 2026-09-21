@@ -31,6 +31,18 @@ wherever the shape of the work allows:]
 [If it's internal logic:]
 - Write the function signatures and type definitions the implementation will satisfy.
 
+[If it changes structure — a refactor, a new module, rewired calls or components:]
+- Show the shape of the change as a diff of the call tree, file tree, or component
+  tree: context lines for what stays, `+`/`-` for what changes. Shape only; the code
+  is `/create-plan`'s.
+
+  ```diff
+   handleRequest
+     authenticate
+  +  checkPermission(scope)
+     loadResource
+  ```
+
 [This section is optional only when the work genuinely has no interface — otherwise
 it's the most valuable part of the document.]
 
