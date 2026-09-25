@@ -206,8 +206,7 @@ When things don't match the plan exactly:
   Expected: [what the plan says]
   Found: [actual situation]
   Why this matters: [explanation]
-  Shape: [when the fix changes structure: the plan's call tree or file tree as a diff,
-         `-` for what the plan assumed, `+` for what the code needs]
+  Shape: [if structural: the plan's call or file tree as a diff, `-` planned, `+` needed]
 
   Options:
   1. Adapt and continue (if the change is contained)

@@ -332,8 +332,8 @@ One artifact, three places it appears:
   already carries the phases, file paths, and verification commands it needs
 - Research is supposed to fan out. If it's drilling one question at a time instead of
   spawning subagents in parallel, say so explicitly.
-- Lost mid-phase? `/show-me` (HumanLayer's show-me plugin, installed separately) draws
-  the current topic as a call tree, file tree, or diff.
+- Lost mid-phase? `/show-me` (a separate HumanLayer plugin) sketches the current topic
+  as a tree or diff.
 - Reasoning effort is per-skill, in each SKILL.md's `effort:` frontmatter — the phase
   skills ship at `xhigh`, `/guide` at `low`. If a phase consistently under-thinks, raise
   that skill's effort rather than re-prompting every run.

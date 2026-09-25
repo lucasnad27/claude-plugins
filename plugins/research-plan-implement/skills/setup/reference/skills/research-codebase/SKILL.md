@@ -133,7 +133,7 @@ Detection is a convenience, not a constraint — the user can always override th
 
      [High-level documentation of what was found, answering the user's question by describing what exists]
 
-     [One view of the main flow as it stands today — a call tree or a shallow file tree, with real paths. Not a diff: a diff proposes a change, and that starts in /design-doc.]
+     [A call tree or shallow file tree of the main flow as it exists, with real paths. No diff; changes belong to /design-doc.]
 
      ## Detailed Findings
 
@@ -184,7 +184,7 @@ Detection is a convenience, not a constraint — the user can always override th
 
 8. **Present findings:**
 
-   - Present a concise summary of findings to the user, leading with the Summary's call tree or file tree
+   - Present a concise summary of findings to the user, starting with the Summary's tree
    - Include the path to the research document, and steer toward the open questions:
      ```
      Research doc: `.rpi/research-YYYY-MM-DD-description.md`. Scan over it to make sure you and I are aligned before moving to design — often, running through the open questions is all you really need to do.

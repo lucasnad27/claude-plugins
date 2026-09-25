@@ -31,10 +31,9 @@ wherever the shape of the work allows:]
 [If it's internal logic:]
 - Write the function signatures and type definitions the implementation will satisfy.
 
-[If it changes structure — a refactor, a new module, rewired calls or components:]
-- Show the shape of the change as a diff of the call tree, file tree, or component
-  tree: context lines for what stays, `+`/`-` for what changes. Shape only; the code
-  is `/create-plan`'s.
+[If it changes structure — a refactor, a new module, rewired calls:]
+- Diff the call tree, file tree, or component tree. Shape only; code belongs in
+  `/create-plan`.
 
   ```diff
    handleRequest
