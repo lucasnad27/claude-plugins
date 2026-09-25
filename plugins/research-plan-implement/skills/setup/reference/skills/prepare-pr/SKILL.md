@@ -130,6 +130,9 @@ This is the work. Everything downstream is formatting.
 ## Summary
 [≤5 sentences: what this change does, why, and the approach. Link the issue.]
 
+[Structural changes only: one tree diff, or a Mermaid sequence diagram if the forge
+renders Mermaid, ≤12 lines. Reuse the design doc's shape diff, updated to what landed.]
+
 ## Review guide (N stops)
 Each stop is an inline comment on the line it names.
 

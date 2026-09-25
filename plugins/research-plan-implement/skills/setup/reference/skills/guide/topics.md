@@ -90,7 +90,7 @@ This workflow uses **intentional compaction** — periodically pausing work and 
 - Patterns to follow explicitly called out
 - A concrete reference artifact wherever the work has a shape worth rendering — a
   self-contained HTML mockup for UI, real request/response payloads for an API, a
-  schema diff for a data model change
+  schema diff for a data model change, a call-tree or file-tree diff for a refactor
 - Testing approach decided (not deferred to planning)
 - Key decisions documented with rationale
 - Scope boundaries defined (what we're NOT doing)
@@ -332,6 +332,8 @@ One artifact, three places it appears:
   already carries the phases, file paths, and verification commands it needs
 - Research is supposed to fan out. If it's drilling one question at a time instead of
   spawning subagents in parallel, say so explicitly.
+- Lost mid-phase? `/show-me` (a separate HumanLayer plugin) sketches the current topic
+  as a tree or diff.
 - Reasoning effort is per-skill, in each SKILL.md's `effort:` frontmatter — the phase
   skills ship at `xhigh`, `/guide` at `low`. If a phase consistently under-thinks, raise
   that skill's effort rather than re-prompting every run.

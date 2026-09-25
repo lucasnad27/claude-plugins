@@ -67,8 +67,16 @@ Phase 2: [Name] — [What it accomplishes end-to-end]
 Phase 3: [Name] — [What it accomplishes end-to-end]
   Testing: [How this phase will be verified]
 
+Files by phase:
+src/
+├── routes/dashboard/+page.svelte       # P1, P3
+├── lib/server/jobs/metrics.ts          # P2
+└── routes/dashboard/+page.server.ts    # P3
+
 Does this phasing make sense? Should I adjust?
 ```
+
+If the tags follow the stack's layers — schema P1, services P2, routes P3 — the phases are horizontal. Reslice unless horizontal is justified (see below).
 
 Get user approval on the outline before writing the full plan.
 

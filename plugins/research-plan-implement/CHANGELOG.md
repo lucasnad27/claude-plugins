@@ -27,6 +27,16 @@ Format based on [Keep a Changelog](https://keepachangelog.com).
   between them, whatever root the install keeps. `.rpi/` is gitignored and so
   per-worktree; setup lists the other worktrees still holding suffix-named files and
   offers the same rename there.
+- **Checkpoints show the shape of the work instead of describing it** — a call tree,
+  file tree, or diff, borrowed from HumanLayer's
+  [show-me](https://github.com/humanlayer/skills/tree/main/plugins/show-me). Nothing to install.
+  - `/research-codebase` — a tree of the current flow in the Summary. Never a diff.
+  - `/design-doc` — a tree diff as the concrete reference for structural changes, and a
+    tree sketch per option in question previews.
+  - `/create-plan` — the outline ends with a file tree tagged by phase, which exposes
+    phases that are really layers.
+  - `/implement-plan` — a structural deviation shows planned vs. needed as a diff.
+  - `/prepare-pr` — structural PRs get one diagram under Summary, ≤12 lines.
 
 ## [5.0.1] - 2026-08-31
 
