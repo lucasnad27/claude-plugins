@@ -8,7 +8,7 @@
     {
       "name": "research-plan-implement",
       "description": "Workflow for managing AI agent context through intentional compaction. Research codebase, create detailed plans, and implement phase-by-phase with verification.",
-      "version": "5.0.1",
+      "version": "5.1.0",
       "source": "./plugins/research-plan-implement",
       "author": {
         "name": "Lucas Culbertson",

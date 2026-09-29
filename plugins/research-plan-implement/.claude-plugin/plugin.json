@@ -1,6 +1,6 @@
 {
   "name": "research-plan-implement",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "Expanded workflow for managing AI agent context through intentional compaction. Research codebase, align on design, create detailed plans, implement phase-by-phase with verification, and review changes. Includes design alignment, testing-aware implementation, and guided review. Inspired by HumanLayer, CRISPY/Dex, and Simon Willison.",
   "author": {
     "name": "Lucas Culbertson",
